@@ -1,7 +1,8 @@
 /* Doesn't work right.  Main thread sucks up all the CPU time polling unless
    we call thr_yield(). */
 #include	"unpthread.h"
-#include	<thread.h>		/* Solaris threads */
+#include	<pthread.h>		/* Pthread */
+#include	<sched.h>
 
 #define	MAXFILES	20
 #define	SERV		"80"	/* port number or service name */
@@ -69,7 +70,11 @@ printf("created thread %d\n", tid);
 			nconn++;
 			nlefttoconn--;
 		}
-thr_yield();
+#ifdef __APPLE__
+sched_yield();
+#else
+pthread_yield();
+#endif
 
 			/* See if one of the threads is done */
 		if ( (n = pthread_mutex_lock(&ndone_mutex)) != 0)
