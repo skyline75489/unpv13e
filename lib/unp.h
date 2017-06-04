@@ -22,6 +22,9 @@
 #include	<time.h>		/* old system? */
 #endif
 #endif
+#ifdef __APPLE__
+#define __APPLE_USE_RFC_3542
+#endif
 #include	<netinet/in.h>	/* sockaddr_in{} and other Internet defns */
 #include	<arpa/inet.h>	/* inet(3) functions */
 #include	<errno.h>
