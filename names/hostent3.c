@@ -43,17 +43,14 @@ void
 pr_ipv4(char **listptr)
 {
 	struct in_addr	inaddr;
-	struct hostent	*hptr, hent;
+	struct hostent	*hptr;
 	char			buf[8192];
-	int				h_errno;
 
 	for ( ; *listptr != NULL; listptr++) {
 		inaddr = *((struct in_addr *) (*listptr));
-		printf("	IPv4 address: %s", Inet_ntoa(inaddr));
+		printf("	IPv4 address: %s", inet_ntoa(inaddr));
 
-		if ( (hptr = gethostbyaddr_r((char *) &inaddr, sizeof(struct in_addr),
-									 AF_INET, &hent,
-									 buf, sizeof(buf), &h_errno)) == NULL)
+		if ( (hptr = gethostbyaddr(&inaddr, sizeof(in_addr), AF_INET) == NULL) )
 			printf("    (gethostbyaddr failed: %s)\n", hstrerror(h_errno));
 		else if (hptr->h_name != NULL)
 			printf("    name = %s\n", hptr->h_name);
