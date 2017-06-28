@@ -50,7 +50,7 @@ pr_ipv4(char **listptr)
 		inaddr = *((struct in_addr *) (*listptr));
 		printf("	IPv4 address: %s", inet_ntoa(inaddr));
 
-		if ( (hptr = gethostbyaddr(&inaddr, sizeof(in_addr), AF_INET) == NULL) )
+		if ( (hptr = gethostbyaddr(&inaddr, sizeof(inaddr), AF_INET) == NULL) )
 			printf("    (gethostbyaddr failed: %s)\n", hstrerror(h_errno));
 		else if (hptr->h_name != NULL)
 			printf("    name = %s\n", hptr->h_name);
