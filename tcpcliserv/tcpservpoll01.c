@@ -1,6 +1,9 @@
 /* include fig01 */
 #include	"unp.h"
 #include	<limits.h>		/* for OPEN_MAX */
+#ifndef OPEN_MAX
+#define OPEN_MAX 1024
+#endif
 
 int
 main(int argc, char **argv)
