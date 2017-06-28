@@ -13,3 +13,6 @@ register:	register.o ${OBJS}
 
 add:	add.o ${OBJS}
 	${CC} ${CFLAGS} -o $@ $@.o ${OBJS} ${LIBS}
+
+clean:
+	rm -rf ${PROGS} ${CLEANFILES}
