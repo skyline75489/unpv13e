@@ -1,5 +1,9 @@
 #include	"trace.h"
 
+#ifndef ICMP6_DST_UNREACH_NOTNEIGHBOR
+#define ICMP6_DST_UNREACH_NOTNEIGHBOR 2
+#endif
+
 const char *
 icmpcode_v6(int code)
 {
