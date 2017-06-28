@@ -1,5 +1,9 @@
 #include "unp.h"
+#ifdef linux
+#include <linux/pfkeyv2.h>
+#else
 #include <net/pfkeyv2.h>
+#endif
 
 int
 salen(struct sockaddr *sa)
