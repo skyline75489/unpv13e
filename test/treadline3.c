@@ -1,5 +1,5 @@
 #include	"unp.h"
-#include	"readline.h"
+#include	"readline3.h"
 
 int
 main(int argc, char **argv)
